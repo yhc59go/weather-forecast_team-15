@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="待指定" />
+    <script
+      src="https://kit.fontawesome.com/518bb0dc3e.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="css/newsTicker.css" />
-    <link rel="stylesheet" type="text/css" href="css/countryWide.css" />
+    <link rel="stylesheet" type="text/css" href="css/countrywide.css" />
     <link rel="stylesheet" type="text/css" href="css/countyWeather.css" />
     <link rel="stylesheet" type="text/css" href="css/oneWeekForecast.css" />
     <title>首頁</title>
@@ -15,10 +19,116 @@
     <!-- 縣市：ＯＯ縣/市預報 -->
   </head>
   <body>
-    <nav></nav>
-    <section id="newsTicker"></section>
+    <nav>
+      <div class="navbar">
+        <div class="navbar__logo">
+          <i class="fa-regular fa-cloud-sun-rain fa-2x"></i>
+          <div class="navbar__title">We Help Weather Forecast</div>
+        </div>
+        <div class="navbar__box">
+          <div class="select-box">
+            <div class="options-container">
+              <div class="option" id="option1">
+                <input type="radio" class="radio" />
+                <label for="film">基隆市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">臺北市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">新北市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">桃園市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">新竹市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">新竹縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">苗栗縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">臺中市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">彰化縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">南投縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">雲林縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">嘉義市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">嘉義縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">臺南市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">高雄市</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">屏東縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">宜蘭縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">花蓮縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">臺東縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">澎湖縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">金門縣</label>
+              </div>
+              <div class="option">
+                <input type="radio" class="radio" />
+                <label for="film">連江縣</label>
+              </div>
+            </div>
+            <div class="selected">請選擇縣市</div>
+            <div class="search-box">
+              <input type="text" placeholder="Search..." />
+            </div>
+          </div>
+        </div>
+        <div class="navbar__home">各縣市總覽</div>
+      </div>
+    </nav>
+    <div id="newsTicker"></div>
     <main>
-      <section id="countryWide"></section>
+      <section id="countrywide"></section>
       <div id="countySelected">
         <section id="countyWeather"></section>
         <section id="oneWeekForecast"></section>

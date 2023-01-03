@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+}
+.fa-cloud-sun-rain:before {
+  content: "\f743";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  color: #448899;
+}
+nav {
+  width: 100%;
+  background-color: #aaddee;
+}
+.navbar {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66.5px;
+  position: relative;
+  color: #666666;
+}
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+.navbar__title {
+  margin-left: 5px;
+}
+.navbar__box {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.select-box {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  position: relative;
+}
+.options-container {
+  background: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  color: #757575;
+  overflow: hidden;
+  order: 1;
+  display: none;
+  position: absolute;
+  top: 117px;
+}
+.option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+.option .radio {
+  display: none;
+}
+.selected {
+  background: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  color: #757575;
+  margin-bottom: 10px;
+  position: relative;
+  order: 0;
+}
+.selected:after {
+  content: "\f106";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  color: #757575;
+  position: absolute;
+  transform: rotate(180deg);
+  right: 20px;
+  transition: all 0.4s;
+}
+.select-box .option:hover {
+  background: #e8e8e8;
+  border-radius: 5px;
+  color: #66aabb;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 16px;
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  position: absolute;
+  outline: 2px solid #e8e8e8;
+  outline-offset: -10px;
+  z-index: 100;
+  display: none;
+  border: none;
+}
+.search-box input:focus {
+  outline: none;
+}
+.select-box .options-container.active {
+  display: block;
+  max-height: 200px;
+  overflow-y: scroll;
+  transition: all 0.4s;
+}
+.select-box .options-container.active ~ .selected::after {
+  transform: rotateY(180deg);
+}
+.select-box .options-container.active ~ .search-box input {
+  display: block;
+}
+.options-container::-webkit-scrollbar {
+  background: #666666;
+  border-radius: 8px;
+  width: 8px;
+}
+.options-container::-webkit-scrollbar-thumb {
+  background: #f8f8f8;
+  border-radius: 8px;
+}
