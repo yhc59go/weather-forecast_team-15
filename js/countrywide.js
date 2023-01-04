@@ -36,14 +36,39 @@ el("countrywide").innerHTML = `
         <div class="sec1_cityContainer"></div>
     </div>`
 
+// api跟氣象局網站的縣市順序不同，不確定api以後是否會換順序
+// 故照氣象局網站順序列List，方便後續fetch
+const cityList = [
+    '基隆市', '臺北市', '新北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', 
+    '彰化縣', '南投縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', 
+    '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
+    ];
+
 // 寫入畫面的主函式
-window.onload = function(){
-    if (new Date().getHours() < 6) 
-    return PeriodContent('今日凌晨', '今日白天', '今日晚上', 'day', 'day', 'night')
-    if (new Date().getHours() >= 18) 
-    return PeriodContent('今晚明晨', '明日白天', '明日晚上', 'night', 'day', 'night')
-    PeriodContent('今日白天', '今晚明晨', '明日白天', 'day', 'night', 'day')
-}
+window.onload = loadDayNightName();
+    // 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
+const citys = document.querySelectorAll(".sec1_cityContainer");
+citys.forEach((city,index) => {
+    city.addEventListener("click", ()=>{
+        el("countrywide").setAttribute("hidden", true);
+        LoadCountyWeatherData(cityList[index]);
+        oneWeekForecast_control.renderResult(city.textContent);
+    }); 
+})
+
+async function loadDayNightName(){
+    const url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5&locationName=基隆市&sort=time'
+    const res = await fetch(url);
+    const data = await res.json();
+    const now = new Date().getHours();
+    const endTime = new Date(data.records.location[0].weatherElement[0].time[0].endTime).getHours();
+
+    if (endTime ===6 && now ===17) 
+        return PeriodContent('今晚明晨', '明日白天', '明日晚上', 'night', 'day', 'night');
+    if (endTime ===6) 
+        return PeriodContent('今日凌晨', '今日白天', '今日晚上', 'day', 'day', 'night');
+    PeriodContent('今日白天', '今晚明晨', '明日白天', 'day', 'night', 'day');  
+};
 
 // 依現在時間自動判斷 按鈕顯示：今明白天/晚上，並將相對應的參數帶入 fetch 函式
 function PeriodContent(a, b, c, dayNight0, dayNight1, dayNight2){
@@ -71,14 +96,6 @@ function PeriodContent(a, b, c, dayNight0, dayNight1, dayNight2){
         fetchByCity(2, dayNight2);
     })
 };
-
-// api跟氣象局網站的縣市順序不同，不確定api以後是否會換順序
-// 故照氣象局網站順序列List，方便後續fetch
-const cityList = [
-    '基隆市', '臺北市', '新北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', 
-    '彰化縣', '南投縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', 
-    '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
-    ];
 
 // 依 縣市 個別fetch api 資料，並隨其他參數帶入 load 函式，寫入DOM
 async function fetchByCity(dNIndex, dayNight){ // dNIndex為sec1_dayNight的index
@@ -114,10 +131,4 @@ function loadDayNightWeather(index, data, dNIndex, dayNight){ // dNIndex為sec1_
             </span>
         </span>
         <span class="sec1_rain">☂<br><i>${pop}%</i></span>`
-    // 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
-    city.addEventListener("click", ()=>{
-        el("countrywide").setAttribute("hidden", true);
-        LoadCountyWeatherData(data.locationName);
-        oneWeekForecast_control.renderResult(data.locationName);
-    });     
 }
