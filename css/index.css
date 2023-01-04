@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: "Noto Sans TC";
 }
-.fa-cloud-sun-rain:before {
+.fa-cloud-sun-rain {
   content: "\f743";
   font-family: "Font Awesome 5 Free";
   font-weight: 700;
@@ -122,4 +122,29 @@ nav {
 .options-container::-webkit-scrollbar-thumb {
   background: #f8f8f8;
   border-radius: 8px;
+}
+footer {
+  width: 100%;
+  background-color: #aaddee;
+}
+.footer__container {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: #666666;
+  padding: 20px;
+}
+.footer__author {
+  padding-top: 20px;
+}
+a {
+  text-decoration: none;
+}
+.fa-square-github {
+  color: #ffffff;
+  font-size: 16px;
+}
+li {
+  display: inline;
+  padding-left: 5px;
 }
