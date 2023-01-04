@@ -30,8 +30,11 @@ const filterList = (searchTerm) => {
     }
   });
 };
-const navHome = document.querySelector(".navbar__home");
-navHome.addEventListener("click", resetCountrywideWeather);
+const navHomes = document.querySelectorAll(".navbar__home");
+navHomes.forEach((navHome) => {
+  navHome.addEventListener("click", resetCountrywideWeather);
+});
+// navHome.addEventListener("click", resetCountrywideWeather);
 function resetCountrywideWeather() {
   selected.innerHTML = "請選擇縣市";
   // loadCountrywideWeatherData()

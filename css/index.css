@@ -1,18 +1,20 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans TC";
+  font-family: Microsoft JhengHei, Noto Sans TC, Roboto, sans-serif;
 }
 .fa-cloud-sun-rain {
   content: "\f743";
   font-family: "Font Awesome 5 Free";
   font-weight: 700;
-  color: #448899;
+  color: #ffffff;
 }
 nav {
   width: 100%;
-  background-color: #aaddee;
+  background-color: #187ac8;
 }
 .navbar {
   width: 1200px;
@@ -22,7 +24,7 @@ nav {
   justify-content: space-between;
   height: 66.5px;
   position: relative;
-  color: #666666;
+  color: #ffffff;
 }
 .navbar__logo {
   display: flex;
@@ -34,8 +36,8 @@ nav {
 .navbar__box {
   position: absolute;
   top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 100px;
+  z-index: 1;
 }
 .select-box {
   display: flex;
@@ -66,7 +68,7 @@ nav {
   background: #ffffff;
   width: 100%;
   border-radius: 5px;
-  color: #757575;
+  color: #1a67b1;
   margin-bottom: 10px;
   position: relative;
   order: 0;
@@ -75,22 +77,27 @@ nav {
   content: "\f106";
   font-family: "Font Awesome 5 Free";
   font-weight: 700;
-  color: #757575;
+  color: #1a67b1;
   position: absolute;
   transform: rotate(180deg);
   right: 20px;
   transition: all 0.4s;
 }
 .select-box .option:hover {
-  background: #e8e8e8;
+  background: #e4f3fe;
   border-radius: 5px;
-  color: #66aabb;
+  color: #1a67b1;
 }
-
+.twicon-main-island {
+  font-size: 35px;
+}
+.mobile-ver {
+  display: none;
+}
 .search-box input {
   width: 100%;
   padding: 16px 16px;
-  font-family: "Noto Sans TC";
+  font-family: 微軟正黑體, 思源黑體, Roboto, sans-serif;
   font-size: 16px;
   position: absolute;
   outline: 2px solid #e8e8e8;
@@ -123,15 +130,18 @@ nav {
   background: #f8f8f8;
   border-radius: 8px;
 }
+.navbar__home {
+  cursor: pointer;
+}
 footer {
   width: 100%;
-  background-color: #aaddee;
+  background-color: #187ac8;
 }
 .footer__container {
   width: 1200px;
   margin: 0 auto;
   text-align: center;
-  color: #666666;
+  color: #ffffff;
   padding: 20px;
 }
 .footer__author {
@@ -139,6 +149,7 @@ footer {
 }
 a {
   text-decoration: none;
+  color: #ffffff;
 }
 .fa-square-github {
   color: #ffffff;
@@ -147,4 +158,30 @@ a {
 li {
   display: inline;
   padding-left: 5px;
+}
+
+@media (max-width: 1200px) {
+  .navbar,
+  .footer__container {
+    width: 90%;
+  }
+}
+@media (max-width: 720px) {
+  .select-box {
+    width: 150px;
+  }
+  .navbar__box {
+    right: 40px;
+  }
+  .mobile-ver {
+    display: block;
+  }
+  .desktop-ver {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .navbar__title {
+    display: none;
+  }
 }
