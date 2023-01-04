@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+}
+
+#countyWeather {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#countyWeather .main-title {
+  font-size: 1.375rem;
+  letter-spacing: 4px;
+  color: #1a67b1;
+  font-weight: 400;
+  position: relative;
+  padding: 10px 0 10px 45px;
+  margin: 20px 0;
+}
+
+#countyWeather .main-title > i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.875rem;
+  color: #1a67b1;
+}
+
+#countyWeather ul {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+.sec2_weather-table {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sec2_weather-table .sec2_title {
+  font-size: 1.175rem;
+}
+
+.sec2_weather-table li {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  margin: 0 20px;
+  padding: 5px;
+  background: #f5f5f5;
+  justify-content: center;
+}
+
+.sec2_weather-table li span {
+  width: 100%;
+  text-align: center;
+  color: #333;
+}
+
+.sec2_weather-table li img {
+  width: 60px;
+  height: 60px;
+}
+
+@media (max-width: 1200px) {
+  #countyWeather {
+    width: 90%;
+  }
+}
+
+@media (max-width: 720px) {
+  .sec2_weather-table {
+    display: block;
+  }
+  .sec2_weather-table li {
+    width: 75%;
+    margin: 20px auto;
+  }
+}
