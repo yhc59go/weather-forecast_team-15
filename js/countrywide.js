@@ -46,13 +46,12 @@ const cityList = [
 
 // 寫入畫面的主函式
 window.onload = loadDayNightName();
-    // 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
-const citys = document.querySelectorAll(".sec1_cityContainer");
-citys.forEach((city,index) => {
+// 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
+document.querySelectorAll(".sec1_cityContainer").forEach((city,index) => {
     city.addEventListener("click", ()=>{
         el("countrywide").setAttribute("hidden", true);
         LoadCountyWeatherData(cityList[index]);
-        oneWeekForecast_control.renderResult(city.textContent);
+        oneWeekForecast_control.renderResult(cityList[index]);
     }); 
 })
 
