@@ -1,14 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC";
-}
-
 #countyWeather {
   width: 1200px;
-  margin: 0 auto;
-  padding-top: 10px;
+  margin: 0;
   padding-bottom: 15px;
 }
 
@@ -19,7 +11,7 @@
   font-weight: 400;
   position: relative;
   padding: 10px 0 10px 45px;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 #countyWeather .main-title > i {
@@ -59,6 +51,10 @@
   justify-content: center;
 }
 
+.sec2_weather-table li:hover {
+  box-shadow: 5px 5px 15px rgba(105, 98, 98, 0.3);
+}
+
 .sec2_weather-table li span {
   width: 100%;
   text-align: center;
@@ -68,6 +64,11 @@
 .sec2_weather-table li img {
   width: 60px;
   height: 60px;
+}
+
+.sec2_rain .rain-icon {
+  color: #1a67b1;
+  text-shadow: 2px 1px 3px rgb(192 187 187);
 }
 
 @media (max-width: 1200px) {

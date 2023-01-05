@@ -56,7 +56,7 @@ async function LoadCountyWeatherData(cityName) {
                 <span class="sec2_title">${title[i]}</span>
                 <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/${dayTime[i]}/${imgValue}.svg"/>
                 <span class="sec2_temperature">${minTemperature[i].parameter.parameterName} - ${maxTemperature[i].parameter.parameterName}˚C</span>
-                <span class="sec2_rain">☂ ${popData[i].parameter.parameterName}%</span>
+                <span class="sec2_rain"><span class="rain-icon">☂</span> ${popData[i].parameter.parameterName}%</span>
                 <span class="sec2_feeling">${feeling[i].parameter.parameterName}</span>
             </li>`;
           weatherTable.innerHTML += content;
