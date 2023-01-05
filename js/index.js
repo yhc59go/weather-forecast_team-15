@@ -57,6 +57,7 @@ navHomes.forEach((navHome) => {
 function resetCountrywideWeather() {
   selected.textContent = "請選擇縣市";
   searchBoxInput.value = "";
+  document.title = `首頁`;
   countrywide.removeAttribute("hidden");
   countySelected.setAttribute("hidden", true);
 }
