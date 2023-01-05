@@ -13,7 +13,7 @@ async function LoadCountyWeatherData(cityName) {
   weatherTable.innerHTML = "";
   try {
     const response = await fetch(
-      `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5&locationName=${cityName}&elementName=`
+      `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${apiAuthorizationCode}&locationName=${cityName}&elementName=`
     );
     const data = await response.json();
     if (data.success) {
