@@ -32,7 +32,7 @@ async function LoadCountyWeatherData(cityName) {
         const dataStartHour = wxData[0].startTime.substring(11, 13);
         const title = [];
         const dayTime = [];
-        if (dataStartHour == 00 && nowHour == 23) {
+        if (nowHour >= 16 && nowHour < 24) {
           title.push("今晚明晨", "明日白天", "明日晚上");
           dayTime.push("night", "day", "night");
         } else if (dataStartHour == 00) {
@@ -41,9 +41,6 @@ async function LoadCountyWeatherData(cityName) {
         } else if (dataStartHour == 06 || dataStartHour == 12) {
           title.push("今日白天", "今晚明晨", "明日白天");
           dayTime.push("day", "night", "day");
-        } else if (dataStartHour == 18) {
-          title.push("今晚明晨", "明日白天", "明日晚上");
-          dayTime.push("night", "day", "night");
         }
 
         for (let i = 0; i < 3; i++) {
