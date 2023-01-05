@@ -1,3 +1,4 @@
+const apiAuthorizationCode = "CWB-BA8318ED-96EC-4050-BA0B-F51074DCEA4A";
 const selected = document.querySelector(".selected");
 const optionsContainer = document.querySelector(".options-container");
 const searchBox = document.querySelector(".search-box");
