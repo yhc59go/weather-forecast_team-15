@@ -1,6 +1,5 @@
-window.onload=function(){
+window.addEventListener("load", function(event) {
     const newsTicker=document.getElementById("newsTicker");
-    newsTicker.classList.add('newsTickerBackground');
     newsTicker.classList.add('marqueeContainer');
 
     const newsContainer=document.createElement("div");
@@ -8,12 +7,10 @@ window.onload=function(){
     newsContainer.id="marqueeLine";
 
     getNewsEvent(newsTicker,newsContainer);
-}
+});
 
 function getNewsEvent(newsTicker,newsContainer){
-    const CWB_API_KEY="CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5";
-    src="https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization="+CWB_API_KEY;
-
+    src="https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization="+`${apiAuthorizationCode}`;
     fetch(src).then((response)=>{
         return response.json();
     }).then((data)=>{
@@ -49,9 +46,17 @@ function getNewsEvent(newsTicker,newsContainer){
                 }         
             }       
         }
-
+        var countEvent=0;
+        var weatherIcon={ "濃霧":"☁",
+                        "陸上強風":"🌪",
+                        "大雨":"☂",
+                        "豪雨":"☔",
+                        "大豪雨":"🌧",
+                        "超大豪雨":"🌧"
+                        };
         for(key in hazardsEvents){
             if(hazardsEvents[key].length>0){
+                countEvent=countEvent+1;
                 let iconExclamation=document.createElement("img");
                 iconExclamation.className = "newsTickerIcon"; 
                 iconExclamation.src = "icon/info_black_48dp.svg"; 
@@ -59,15 +64,34 @@ function getNewsEvent(newsTicker,newsContainer){
                 let newsContent=document.createElement("span");
                 newsContent.className = "contentNewsTicker"; 
 
-                var eventDetails=" 今日"+key+"特報地區: "+hazardsEvents[key].join("、")+"，請留意安全。 ";
+                var eventDetails="📣 🌍 "+weatherIcon[key]+" 今日"+key+"特報地區: "+hazardsEvents[key].join("、")+"，請留意安全。 🌍";
                 newsContent.textContent=eventDetails;
-                newsContent.classList.add('fontStyleFornewsContent');
+                newsContent.classList.remove('fontStyleFornewsContentNormal');
+                newsContent.classList.add('fontStyleFornewsContentAbnormal');
 
                 newsContainer.appendChild(iconExclamation);
                 newsContainer.appendChild(newsContent);
                 newsTicker.appendChild(newsContainer);
             }
         
+        }
+        if(countEvent==0){
+            newsTicker.classList.remove('newsTickerBackgroundAbnormal');
+            newsTicker.classList.add('newsTickerBackgroundNormal');
+            
+            let newsContent=document.createElement("span");
+            newsContent.className = "contentNewsTicker"; 
+            var eventDetails="📣 🌍 目前台灣沒有濃霧、陸上強風、大雨、豪雨、大豪雨、超大豪雨相關特報，享受這美好時光，祝福您! 🌍";
+            newsContent.textContent=eventDetails;
+            newsContent.classList.remove('fontStyleFornewsContentAbnormal');
+            newsContent.classList.add('fontStyleFornewsContentNormal');
+
+            newsContainer.appendChild(newsContent);
+            newsTicker.appendChild(newsContainer);
+        }
+        else{
+            newsTicker.classList.remove('newsTickerBackgroundNormal');
+            newsTicker.classList.add('newsTickerBackgroundAbnormal');
         }
     });
 }
