@@ -192,6 +192,12 @@ const oneWeekForecast_view = {
             document.querySelector(element[i].appendToElement).appendChild(tab);
         };
     },
+    initializeOneWeekForecastElements(){
+        document.querySelector("#oneWeekForecast").remove();
+        let sectionTab = document.createElement("section");
+        sectionTab.id = "oneWeekForecast";
+        document.querySelector("#countySelected").appendChild(sectionTab);
+    }
 };
 const oneWeekForecast_model = {
     formFetchURL(county){
@@ -207,7 +213,7 @@ const oneWeekForecast_model = {
         let fetchURL = `${urlConfig.url}/${urlConfig.apiCode}?Authorization=${urlConfig.authorizationKey}`+
             `&format=${urlConfig.format}&locationName=${urlConfig.county}&elementName=${urlConfig.elementName}`+
             `&sort=${urlConfig.sort}`;
-        console.log("trying to fetch URL:", fetchURL);
+        // console.log("trying to fetch URL:", fetchURL);
         return fetchURL;
     },
     async getForecastData(fetchURL){
@@ -217,10 +223,10 @@ const oneWeekForecast_model = {
             return response.json();
         }).then((data)=>{
             let ForecastData = data["records"]["locations"][0]["location"][0]["weatherElement"];
-            console.log("successfully fetched the forecast data:", ForecastData);
+            // console.log("successfully fetched the forecast data:", ForecastData);
             return ForecastData;
         }).catch((error)=>{
-            console.log("function 'getForecastDat' encounter an error:", error);
+            // console.log("function 'getForecastDat' encounter an error:", error);
         });
         return ForecastData;
     },
@@ -306,17 +312,18 @@ const oneWeekForecast_model = {
             UVIIconArray: ["uvi_0-2.svg", "uvi_0-2.svg", "uvi_0-2.svg", "uvi_3-5.svg", "uvi_3-5.svg", "uvi_3-5.svg", "uvi_6-7.svg", "uvi_6-7.svg", 
                 "uvi_8-10.svg", "uvi_8-10.svg", "uvi_8-10.svg", "uvi_11.svg"]
         };
-    },
+    }
 };
 const oneWeekForecast_control = {
     renderResult(county){
+        oneWeekForecast_view.initializeOneWeekForecastElements();
         oneWeekForecast_model.getForecastData(oneWeekForecast_model.formFetchURL(county)).then((fetchedData)=>{
             let data = oneWeekForecast_model.formData(county, fetchedData);
-            console.log("filtered forecast data are:", data);
+            // console.log("filtered forecast data are:", data);
             let column = ["sectionStructure", "一週預報標題", "縣市與日期欄位", "白天欄位", "晚上欄位", "體感溫度欄位", "紫外線欄位"];
             for(let i=0; i<column.length; i++){
                 let element  = oneWeekForecast_view.formElement(column[i], data);
-                console.log(`the elements in column "${column[i]}" are:`, element);
+                // console.log(`the elements in column "${column[i]}" are:`, element);
                 oneWeekForecast_view.renderElement(element);
             };
         });
