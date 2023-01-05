@@ -42,28 +42,28 @@ const cityList = [
     '基隆市', '臺北市', '新北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', 
     '彰化縣', '南投縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', 
     '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
-    ];
+];
 
 // 寫入畫面的主函式
-window.onload = loadDayNightName();
-    // 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
-const citys = document.querySelectorAll(".sec1_cityContainer");
-citys.forEach((city,index) => {
+loadDayNightName();
+// 點縣市區塊，隱藏目前畫面，並引入其他相對應的 section 內容
+document.querySelectorAll(".sec1_cityContainer").forEach((city,index) => {
     city.addEventListener("click", ()=>{
         el("countrywide").setAttribute("hidden", true);
+        el("countySelected").removeAttribute("hidden");
         LoadCountyWeatherData(cityList[index]);
-        oneWeekForecast_control.renderResult(city.textContent);
+        oneWeekForecast_control.renderResult(cityList[index]);
     }); 
 })
 
 async function loadDayNightName(){
-    const url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5&locationName=基隆市&sort=time'
+    const url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${apiAuthorizationCode}&locationName=基隆市&sort=time`
     const res = await fetch(url);
     const data = await res.json();
     const now = new Date().getHours();
     const endHour = new Date(data.records.location[0].weatherElement[0].time[0].endTime).getHours();
 
-    if (endHour ===6 && now <23) 
+    if (endHour ===6 && now >=17) 
         return PeriodContent('今晚明晨', '明日白天', '明日晚上', 'night', 'day', 'night');
     if (endHour ===6) 
         return PeriodContent('今日凌晨', '今日白天', '今日晚上', 'day', 'day', 'night');
@@ -100,7 +100,7 @@ function PeriodContent(a, b, c, dayNight0, dayNight1, dayNight2){
 // 依 縣市 個別fetch api 資料，並隨其他參數帶入 load 函式，寫入DOM
 async function fetchByCity(dNIndex, dayNight){ // dNIndex為sec1_dayNight的index
     for (const [index, ct] of cityList.entries()) {
-        const url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5&locationName=${ct}&sort=time`
+        const url = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${apiAuthorizationCode}&locationName=${ct}&sort=time`
         const res = await fetch(url);
         const resp = await res.json();
         const data = resp.records.location[0];

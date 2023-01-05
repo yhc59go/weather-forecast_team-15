@@ -3,6 +3,8 @@
 #countrywide {
     font-family: Microsoft JhengHei, Noto Sans TC, Roboto, sans-serif !important;
     color: #333;
+    margin: 30px auto;
+    width: 1000px;
 }
 
 #countrywide * {
@@ -29,11 +31,6 @@
     transform: translateY(-50%);
     font-size: 1.875rem;
     color: #1a67b1;
-}
-
-#countrywide{
-    margin: 10px auto;
-    width: 1000px;
 }
 
 #sec1_dayContent{
