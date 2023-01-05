@@ -13,7 +13,9 @@ selected.addEventListener("click", () => {
 optionsList.forEach((option) => {
   option.addEventListener("click", () => {
     selected.innerHTML = option.querySelector("label").innerHTML;
-    // LoadCountyWeatherData(selected.innerHTML)
+    LoadCountyWeatherData(selected.innerHTML);
+    const countrywide = document.getElementById("countrywide");
+    countrywide.style.display = "none";
     optionsContainer.classList.remove("active");
   });
 });
@@ -34,8 +36,11 @@ const navHomes = document.querySelectorAll(".navbar__home");
 navHomes.forEach((navHome) => {
   navHome.addEventListener("click", resetCountrywideWeather);
 });
-// navHome.addEventListener("click", resetCountrywideWeather);
+
 function resetCountrywideWeather() {
   selected.innerHTML = "請選擇縣市";
-  // loadCountrywideWeatherData()
+  const countrywide = document.getElementById("countrywide");
+  countrywide.style.display = "block";
+  const countySelected = document.getElementById("countySelected");
+  countySelected.style.display = "none";
 }
