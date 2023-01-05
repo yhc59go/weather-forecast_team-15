@@ -6,7 +6,7 @@ const optionsList = document.querySelectorAll(".option");
 const searchBoxInput = document.querySelector(".search-box > input");
 const countrywide = document.getElementById("countrywide");
 const countySelected = document.getElementById("countySelected");
-const navBox = document.querySelector(".nav__box");
+
 selected.addEventListener("click", (event) => {
   event.stopPropagation();
   optionsContainer.classList.toggle("active");
@@ -19,14 +19,20 @@ selected.addEventListener("click", (event) => {
 
 optionsList.forEach((option) => {
   option.addEventListener("click", () => {
-    selected.innerHTML = option.querySelector("label").innerHTML;
-    countrywide.setAttribute("hidden", true);
-    LoadCountyWeatherData(selected.innerHTML);
-    countySelected.removeAttribute("hidden");
-    optionsContainer.classList.remove("active");
-    searchBoxInput.value = "";
+    countyName = option.querySelector("label").textContent;
+    setCountyWeather(countyName);
   });
 });
+
+function setCountyWeather(countyName) {
+  selected.textContent = countyName;
+  document.title = `${countyName}預報`;
+  LoadCountyWeatherData(countyName);
+  countrywide.setAttribute("hidden", true);
+  countySelected.removeAttribute("hidden");
+  optionsContainer.classList.remove("active");
+  searchBoxInput.value = "";
+}
 
 searchBox.addEventListener("keyup", function (e) {
   filterList(e.target.value);
@@ -49,7 +55,7 @@ navHomes.forEach((navHome) => {
 });
 
 function resetCountrywideWeather() {
-  selected.innerHTML = "請選擇縣市";
+  selected.textContent = "請選擇縣市";
   searchBoxInput.value = "";
   countrywide.removeAttribute("hidden");
   countySelected.setAttribute("hidden", true);
