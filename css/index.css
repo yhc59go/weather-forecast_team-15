@@ -29,6 +29,7 @@ nav {
 .navbar__logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .navbar__title {
   margin-left: 5px;
@@ -132,6 +133,9 @@ nav {
 }
 .navbar__home {
   cursor: pointer;
+}
+main {
+  margin: 30px 0;
 }
 footer {
   width: 100%;
