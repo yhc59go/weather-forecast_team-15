@@ -1,0 +1,103 @@
+#oneWeekForecast{
+    width: 1200px;
+    margin: 30px auto;
+}
+#oneWeekForecastTitle{
+    margin: 20px 0;
+}
+.oneWeekForecastContent{
+    padding: 0 20px 30px 20px;
+}
+.oneWeekForecastContent > div{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+.columnTitle, .columnTitle_lightGreen, .columnTitle_red, .rowTitle, .content, .content_whitStroke{
+    display: flex;
+    flex-shrink: 0;
+    height: 80px;
+    width: 12%;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+.columnTitle, .columnTitle_lightGreen, .columnTitle_red, .rowTitle{
+    color: #ffffff;
+    flex-direction: column;
+}
+.columnTitle, .rowTitle{
+    background-color: #0f838c;
+}
+.columnTitle_lightGreen{
+    background-color: #5ebdca;
+}
+.columnTitle_red{
+    background-color: #d83023;
+}
+.content{
+    flex-direction: column;
+    padding: 2px;
+}
+.content__img{
+    height: 30px;
+    width: auto;
+    padding: 0px;
+}
+.content__span{
+    margin: 0px;
+    padding: 0px;
+}
+.content_whitStroke{
+    font-weight: bold;
+    -webkit-text-stroke: 0.3px #ffffff;
+}
+@media (max-width: 1200px) {
+    #oneWeekForecast{
+        width: 90%;
+    }
+}
+@media (max-width: 720px) {
+    #oneWeekForecast{
+        width: 90%;
+    }
+    .columnTitle, .columnTitle_lightGreen, .columnTitle_red, .rowTitle, .content, .content_whitStroke{
+        width: 5rem;
+    }
+    .oneWeekForecastContent{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .oneWeekForecastContent > div{
+        margin: 0;
+    }
+    .oneWeekForecastContent > div{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 360px) {
+    #oneWeekForecast{
+        width: 90%;
+    }
+    #oneWeekForecastContent_appTemp, #oneWeekForecastContent_UVI{
+        display: none;
+    }
+    .columnTitle, .columnTitle_lightGreen, .columnTitle_red, .content{
+        width: 80px;
+    }
+    .oneWeekForecastContent{
+        display: flex;
+        flex-direction: row;
+    }
+    .oneWeekForecastContent > div{
+        display: flex;
+        flex-direction: column;
+    }
+}
