@@ -3,26 +3,35 @@ const selected = document.querySelector(".selected");
 const optionsContainer = document.querySelector(".options-container");
 const searchBox = document.querySelector(".search-box");
 const optionsList = document.querySelectorAll(".option");
-selected.addEventListener("click", () => {
+const searchBoxInput = document.querySelector(".search-box > input");
+const countrywide = document.getElementById("countrywide");
+const countySelected = document.getElementById("countySelected");
+const navBox = document.querySelector(".nav__box");
+selected.addEventListener("click", (event) => {
+  event.stopPropagation();
   optionsContainer.classList.toggle("active");
-  searchBox.value = "";
+  searchBoxInput.value = "";
   filterList("");
   if (optionsContainer.classList.contains("active")) {
     searchBox.focus;
   }
 });
+
 optionsList.forEach((option) => {
   option.addEventListener("click", () => {
     selected.innerHTML = option.querySelector("label").innerHTML;
+    countrywide.setAttribute("hidden", true);
     LoadCountyWeatherData(selected.innerHTML);
-    const countrywide = document.getElementById("countrywide");
-    countrywide.style.display = "none";
+    countySelected.removeAttribute("hidden");
     optionsContainer.classList.remove("active");
+    searchBoxInput.value = "";
   });
 });
+
 searchBox.addEventListener("keyup", function (e) {
   filterList(e.target.value);
 });
+
 const filterList = (searchTerm) => {
   optionsList.forEach((option) => {
     let label = option.firstElementChild.nextElementSibling.innerHTML;
@@ -33,6 +42,7 @@ const filterList = (searchTerm) => {
     }
   });
 };
+
 const navHomes = document.querySelectorAll(".navbar__home");
 navHomes.forEach((navHome) => {
   navHome.addEventListener("click", resetCountrywideWeather);
@@ -40,8 +50,17 @@ navHomes.forEach((navHome) => {
 
 function resetCountrywideWeather() {
   selected.innerHTML = "請選擇縣市";
-  const countrywide = document.getElementById("countrywide");
-  countrywide.style.display = "block";
-  const countySelected = document.getElementById("countySelected");
-  countySelected.style.display = "none";
+  searchBoxInput.value = "";
+  countrywide.removeAttribute("hidden");
+  countySelected.setAttribute("hidden", true);
 }
+
+document.addEventListener("click", (event) => {
+  if (
+    optionsContainer.classList.contains("active") &&
+    !optionsContainer.contains(event.target) &&
+    !searchBoxInput.contains(event.target)
+  ) {
+    optionsContainer.classList.remove("active");
+  }
+});
