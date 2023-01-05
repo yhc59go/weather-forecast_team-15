@@ -64,7 +64,7 @@ async function loadDayNightName(){
     const now = new Date().getHours();
     const endHour = new Date(data.records.location[0].weatherElement[0].time[0].endTime).getHours();
 
-    if (endHour ===6 && now >=17) 
+    if (endHour ===6 && now >=12) 
         return PeriodContent('今晚明晨', '明日白天', '明日晚上', 'night', 'day', 'night');
     if (endHour ===6) 
         return PeriodContent('今日凌晨', '今日白天', '今日晚上', 'day', 'day', 'night');
