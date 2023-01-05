@@ -28,6 +28,7 @@ function setCountyWeather(countyName) {
   selected.textContent = countyName;
   document.title = `${countyName}預報`;
   LoadCountyWeatherData(countyName);
+  oneWeekForecast_control.renderResult(countyName);
   countrywide.setAttribute("hidden", true);
   countySelected.removeAttribute("hidden");
   optionsContainer.classList.remove("active");
