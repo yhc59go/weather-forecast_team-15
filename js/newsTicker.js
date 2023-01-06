@@ -64,7 +64,7 @@ function getNewsEvent(newsTicker,newsContainer){
                 let newsContent=document.createElement("span");
                 newsContent.className = "contentNewsTicker"; 
 
-                var eventDetails="📣 🌍 "+weatherIcon[key]+" 今日"+key+"特報地區: "+hazardsEvents[key].join("、")+"，請留意安全。 🌍";
+                var eventDetails="  📣 🌍 "+weatherIcon[key]+" 今日"+key+"特報地區: "+hazardsEvents[key].join("、")+"，請留意安全。 🌍  ";
                 newsContent.textContent=eventDetails;
                 newsContent.classList.remove('fontStyleFornewsContentNormal');
                 newsContent.classList.add('fontStyleFornewsContentAbnormal');
@@ -81,7 +81,7 @@ function getNewsEvent(newsTicker,newsContainer){
             
             let newsContent=document.createElement("span");
             newsContent.className = "contentNewsTicker"; 
-            var eventDetails="📣 🌍 目前台灣沒有濃霧、陸上強風、大雨、豪雨、大豪雨、超大豪雨相關特報，享受這美好時光，祝福您! 🌍";
+            var eventDetails="  📣 🌍 目前台灣沒有濃霧、陸上強風、大雨、豪雨、大豪雨、超大豪雨相關特報，享受這美好時光，祝福您! 🌍  ";
             newsContent.textContent=eventDetails;
             newsContent.classList.remove('fontStyleFornewsContentAbnormal');
             newsContent.classList.add('fontStyleFornewsContentNormal');
