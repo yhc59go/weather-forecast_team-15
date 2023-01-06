@@ -57,7 +57,7 @@ const oneWeekForecast_view = {
             for(let i=1; i<data.dateArray.length; i++){
                 element.push({
                     tab: "div",
-                    innerHTML: `<span>星期${data.dayArray[new Date(data.dateArray[i]).getDay()]}</span><span>${data.dateArray[i]}</span>`,
+                    innerHTML: `<span>星期${data.dayArray[new Date(data.dateArray[i]).getDay()]}</span><span>${data.dateArray[i].slice(5, 10)}</span>`,
                     appendToElement: "#oneWeekForecastContent_date",
                     attribute: [
                         ["class", (data.holidayArray[new Date(data.dateArray[i]).getDay()]===0) ? "columnTitle" : "columnTitle_red"]
@@ -236,7 +236,7 @@ const oneWeekForecast_model = {
     },
     getDataByValueType(valueType, data, i, array){
         if(valueType==="date"){
-            return array.push(data[i]["startTime"].slice(5, 10));
+            return array.push(data[i]["startTime"].slice(0, 10));
         }else if(valueType==="value"){
             return array.push(data[i]["elementValue"][0]["value"]);
         }else if(valueType==="minValue"){
