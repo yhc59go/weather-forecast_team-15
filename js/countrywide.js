@@ -50,7 +50,7 @@ loadDayNightName();
 document.querySelectorAll(".sec1_cityContainer").forEach((city,index) => {
     city.addEventListener("click", ()=>{
         el("countrywide").setAttribute("hidden", true);
-        el("countySelected").removeAttribute("hidden");
+        el("countySelected").style.display = "";
         document.title = `${cityList[index]}預報`;
         LoadCountyWeatherData(cityList[index]);
         oneWeekForecast_control.renderResult(cityList[index]);
