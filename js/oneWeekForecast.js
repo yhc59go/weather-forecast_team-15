@@ -64,7 +64,6 @@ const oneWeekForecast_view = {
                     ]
                 });
             };
-            console.log(element);
         }else if(elementType==="白天欄位"){
             element.push({
                 tab: "div",
@@ -224,7 +223,7 @@ const oneWeekForecast_model = {
             return response.json();
         }).then((data)=>{
             let ForecastData = data["records"]["locations"][0]["location"][0]["weatherElement"];
-            console.log("successfully fetched the forecast data:", ForecastData);
+            // console.log("successfully fetched the forecast data:", ForecastData);
             return ForecastData;
         }).catch((error)=>{
             // console.log("function 'getForecastDat' encounter an error:", error);
@@ -320,7 +319,7 @@ const oneWeekForecast_control = {
         oneWeekForecast_view.initializeOneWeekForecastElements();
         oneWeekForecast_model.getForecastData(oneWeekForecast_model.formFetchURL(county, apiAuthorizationCode)).then((fetchedData)=>{
             let data = oneWeekForecast_model.formData(county, fetchedData);
-            console.log("filtered forecast data are:", data);
+            // console.log("filtered forecast data are:", data);
             let column = ["sectionStructure", "一週預報標題", "縣市與日期欄位", "白天欄位", "晚上欄位", "體感溫度欄位", "紫外線欄位"];
             for(let i=0; i<column.length; i++){
                 let element  = oneWeekForecast_view.formElement(column[i], data);
