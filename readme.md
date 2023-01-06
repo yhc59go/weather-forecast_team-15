@@ -63,13 +63,16 @@
   - 資訊來源: [中央氣象局開放資料平臺提供的 API](https://opendata.cwb.gov.tw/dist/opendata-swagger.html)
 - 畫面展示:
 
-  - 有異常天氣特報事件時: 閃爍顯示有發布警示特報的地區，畫面呈現如下圖。
-
+  - 有異常天氣特報事件時: 閃爍顯示有發布警示特報的地區，畫面呈現如下所示。
+    <img src="./image/abnormalEvent.gif" width="1000"/>
+    
     ![abnormalEvent_1](image/abnormalEvent_1.PNG)
     ![abnormalEvent_2](image/abnormalEvent_2.PNG)
 
-  - 沒有異常天氣特報事件時: 閃爍顯示問候祝福語，畫面呈現如下圖。
 
+  - 沒有異常天氣特報事件時: 閃爍顯示問候祝福語，畫面呈現如下圖所示。
+    <img src="./image/normalevent.gif" width="1000"/>
+    
     ![noAbnormalEvent_1](image/noAbnormalEvent_1.PNG)
     ![noAbnormalEvent_2](image/noAbnormalEvent_2.PNG)
 
