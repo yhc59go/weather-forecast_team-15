@@ -8,9 +8,7 @@
 
 - Nav bar DEMO video
 
-  <video width="500" height="240" controls>
-    <source src="image/Nav_bar_DEMO.mov" type="video/mp4">
-  </video>
+  <img src="./image/Nav_bar_DEMO.gif" width="450"/>
 
 - Nav bar RWD
 
