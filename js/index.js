@@ -6,6 +6,9 @@ const optionsList = document.querySelectorAll(".option");
 const searchBoxInput = document.querySelector(".search-box > input");
 const countrywide = document.getElementById("countrywide");
 const countySelected = document.getElementById("countySelected");
+const navLogo = document.querySelector(".navbar__logo");
+const navHomes = document.querySelectorAll(".navbar__home");
+
 countySelected.style.display = "none";
 selected.addEventListener("click", (event) => {
   event.stopPropagation();
@@ -49,9 +52,8 @@ const filterList = (searchTerm) => {
     }
   });
 };
-const navLogo = document.querySelector(".navbar__logo");
+
 navLogo.addEventListener("click", resetCountrywideWeather);
-const navHomes = document.querySelectorAll(".navbar__home");
 navHomes.forEach((navHome) => {
   navHome.addEventListener("click", resetCountrywideWeather);
 });
