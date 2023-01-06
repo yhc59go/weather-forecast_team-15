@@ -67,15 +67,12 @@
         width: 90%;
     }
 }
-@media (max-width: 720px) {
-    #oneWeekForecast{
-        width: 90%;
-    }
-    .columnTitle, .columnTitle_lightGreen, .columnTitle_red, .rowTitle, .content, .content_whitStroke{
+@media (max-width: 750px) {
+    .oneWeekForecastContent .content{
         font-size: 12px;
     }
 }
-@media (max-width: 560px) {
+@media (max-width: 720px) {
     #oneWeekForecast{
         width: 90%;
     }
@@ -83,6 +80,9 @@
         width: 75%;
         margin: 0 auto;
         padding: 0 0;
+    }
+    .oneWeekForecastContent .content{
+        font-size: 16px;
     }
     #oneWeekForecastContent_appTemp, #oneWeekForecastContent_UVI{
         display: none;
