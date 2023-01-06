@@ -35,6 +35,10 @@
     animation: marquee 25s linear infinite;
     vertical-align: middle ;
 }
+
+.marqueeLine:hover {
+    animation-play-state: paused;
+}
 @keyframes marquee {
     0% { transform: translate(150%, 0); -webkit-transform: translateX(150%); }
     100% { transform: translate(-100%, 0); -webkit-transform: translateX(-100%); }
