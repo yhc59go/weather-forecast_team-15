@@ -297,8 +297,8 @@ const oneWeekForecast_model = {
     },
     formData(county, fetchedData){
         return {
-            dayArray:     ["六", "日", "一", "二", "三", "四", "五"], 
-            holidayArray: [1, 1, 0, 0, 0, 0, 0], 
+            dayArray:     ["日", "一", "二", "三", "四", "五", "六"], 
+            holidayArray: [1, 0, 0, 0, 0, 0, 1],
             dateArray:         this.filterFetchedData(fetchedData, this.setFilterCondition(3, county,                "all",    "date")),
             minDayTempArray:   this.filterFetchedData(fetchedData, this.setFilterCondition(2, "白天:最低白天溫度",     "day",   "value")),
             maxDayTempArray:   this.filterFetchedData(fetchedData, this.setFilterCondition(5, "白天:最高白天溫度",     "day",   "value")),
