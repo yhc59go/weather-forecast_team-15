@@ -32,7 +32,7 @@ async function LoadCountyWeatherData(cityName) {
         const dataStartHour = wxData[0].startTime.substring(11, 13);
         const title = [];
         const dayTime = [];
-        if (nowHour >= 16 && nowHour < 24) {
+        if (nowHour >= 17 && nowHour < 24) {
           title.push("今晚明晨", "明日白天", "明日晚上");
           dayTime.push("night", "day", "night");
         } else if (dataStartHour == 00) {
