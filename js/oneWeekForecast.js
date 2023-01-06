@@ -200,17 +200,17 @@ const oneWeekForecast_view = {
     }
 };
 const oneWeekForecast_model = {
-    formFetchURL(county){
+    formFetchURL(county, apiAuthorizationCode){
         let urlConfig = {
             url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore",
             apiCode: "F-D0047-091",
-            authorizationKey: "CWB-B3553433-F001-4DF4-9EFA-7D67695CD183",
+            apiAuthorizationCode: apiAuthorizationCode,
             format: "JSON",
             county: county,
             elementName: "MinT,MaxT,MinAT,MaxAT,UVI,Wx",
             sort: "time",
         };
-        let fetchURL = `${urlConfig.url}/${urlConfig.apiCode}?Authorization=${urlConfig.authorizationKey}`+
+        let fetchURL = `${urlConfig.url}/${urlConfig.apiCode}?Authorization=${urlConfig.apiAuthorizationCode}`+
             `&format=${urlConfig.format}&locationName=${urlConfig.county}&elementName=${urlConfig.elementName}`+
             `&sort=${urlConfig.sort}`;
         // console.log("trying to fetch URL:", fetchURL);
@@ -317,7 +317,7 @@ const oneWeekForecast_model = {
 const oneWeekForecast_control = {
     renderResult(county){
         oneWeekForecast_view.initializeOneWeekForecastElements();
-        oneWeekForecast_model.getForecastData(oneWeekForecast_model.formFetchURL(county)).then((fetchedData)=>{
+        oneWeekForecast_model.getForecastData(oneWeekForecast_model.formFetchURL(county, apiAuthorizationCode)).then((fetchedData)=>{
             let data = oneWeekForecast_model.formData(county, fetchedData);
             // console.log("filtered forecast data are:", data);
             let column = ["sectionStructure", "一週預報標題", "縣市與日期欄位", "白天欄位", "晚上欄位", "體感溫度欄位", "紫外線欄位"];
