@@ -15,6 +15,15 @@
     <!-- 縣市：ＯＯ縣/市預報 -->
   </head>
   <body>
+    
+        alpha:<span id="alpha"></span><br/>
+beta:<span id="beta"></span><br/>
+gamma:<span id="gamma"></span><br/>
+alpha:<span id="tx"></span><br/>
+beta:<span id="ty"></span><br/>
+gamma:<span id="tz"></span><br/>
+    
+    
     <nav></nav>
     <section id="newsTicker"></section>
     <main>
@@ -30,5 +39,51 @@
     <script src="js/countrywide.js"></script>
     <script src="js/countyWeather.js"></script>
     <script src="js/oneWeekForecast.js"></script>
+    
+    <script>
+
+window.addEventListener('devicemotion', function(evnet) {
+  var x = event.acceleration.x;
+  var y = event.acceleration.y;
+  var z = event.acceleration.z;
+}, false);
+if(window.DeviceOrientationEvent) {
+  window.addEventListener('devicemotion', function(event) {
+  var tx = document.getElementById('tx');
+  var  ty = document.getElementById('ty');
+  var  tz = document.getElementById('tz');
+  var x = event.acceleration.x;
+  var  y = event.acceleration.y;
+  var z = event.acceleration.z;
+
+    tx.innerHTML = Math.round(x);
+    ty.innerHTML = Math.round(y);
+    tz.innerHTML = Math.round(z);
+
+    }, false);
+}else{
+  var a = document.getElementById('tx');
+  a.innerHTML = '你的瀏覽器不支援喔~~';
+}
+
+if(window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', function(event) {
+  var a = document.getElementById('alpha');
+  var b = document.getElementById('beta');
+  var  g = document.getElementById('gamma');
+  var  alpha = event.alpha;
+  var  beta = event.beta;
+  var  gamma = event.gamma;
+
+  a.innerHTML = Math.round(alpha);
+  b.innerHTML = Math.round(beta);
+  g.innerHTML = Math.round(gamma);
+
+    }, false);
+}else{
+  var a = document.getElementById('alpha');
+  a.innerHTML = '你的瀏覽器不支援喔~!';
+}
+  </script>
   </body>
 </html>
